@@ -74,7 +74,6 @@ function init_request ( string $request_url, array $agents, array $countries ){
 			CURLOPT_CONNECTTIMEOUT => 120,
 			CURLOPT_TIMEOUT        => 120
 		];
-
 		$curl = curl_init();
 		if ( !function_exists( 'curl_setopt_array' ) ) {
 			function curl_setopt_array( &$ch, $curl_options ){
@@ -111,7 +110,6 @@ function get_proxies( string $by_country, array $agents, array $countries ){
 	} else{
 		$request = init_request( $urls->main, $agents, $countries );
 	}
-
 	$response = curl_exec( $request );
 	preg_match_all( $regex, $response, $matches );
 	
