@@ -44,7 +44,7 @@ function prompt_for_country( $menu, $exit, $ch_cntry, $ch ) {
 	return $choice;
 }
 
-# formatting functions to for correcting padding of text inside the row boxes
+# formatting functions for correcting padding of text inside the row boxes
 function format_ip_column( string $ip ) : string {
 	$ip_box     = "│  " . $ip;
 	$ip_length  = strlen( $ip );
