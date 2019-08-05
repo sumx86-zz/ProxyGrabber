@@ -49,6 +49,10 @@ $exit     = GREEN. "[3]" .NONE." Exit";
 # Start of program
 main( parse_countries( 'countries.dat' ), parse_user_agents( 'u-agents.dat' ), $banner, $options, $exit, $ch, $ch_cntry );
 
+/*
+ * Parse the countries file
+ * @param string $file_name This is the name of the file to be parsed
+ */
 function parse_countries ( string $file_name ) : array {
 	$file = __DIR__.'/'.$file_name;
 	if ( is_file( $file ) ) {
@@ -57,6 +61,10 @@ function parse_countries ( string $file_name ) : array {
 	return [];
 }
 
+/*
+ * Parse the user agents file
+ * @param string $file_name This is the name of the file to be parsed
+ */
 function parse_user_agents ( string $file_name ) : array {
 	$file = __DIR__.'/'.$file_name;
 	if ( is_file( $file ) ) {
@@ -65,6 +73,13 @@ function parse_user_agents ( string $file_name ) : array {
 	return [];
 }
 
+/*
+ * Initialize the http request with parameters
+ * @param string $request_url This is the url of the request
+ * @param array $agents This is an array containing the parsed user agents
+ * @param array $countries This is an array containing the parsed countries
+ * @return bool|resource
+ */
 function init_request ( string $request_url, array $agents, array $countries ){
 	if ( !empty( $agents ) && !empty( $countries ) ) {
 		$options = [
@@ -91,6 +106,10 @@ function init_request ( string $request_url, array $agents, array $countries ){
 	}
 }
 
+/*
+ * Outputs each country to stdout
+ * @param array $countries This is an array containing the parsed countries
+ */
 function display_countries( array $countries ) : void {
 	$i = -1;
 	while ( ($i++) < sizeof( $countries ) - 2 ) {
@@ -99,6 +118,9 @@ function display_countries( array $countries ) : void {
 	echo "\n";
 }
 
+/*
+ * 
+ */
 function get_proxies( string $by_country, array $agents, array $countries ){
 	$i       = -1;
 	$proxies = [];
@@ -128,6 +150,10 @@ function get_proxies( string $by_country, array $agents, array $countries ){
 	return $proxies;
 }
 
+/*
+ * Display the proxy table
+ * @param array $proxies This is a list of proxies
+ */
 function display_proxies( array $proxies ) : void {
 	$i = -1;
 	echo PROXY_TABLE_TOP;
